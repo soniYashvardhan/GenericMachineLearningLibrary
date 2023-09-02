@@ -80,14 +80,14 @@ class Model {
 
                 Tensor<T> gradient(std::vector<size_t> {layer_output.getsize()[0], layer_output.getsize()[1], 1});
                 lossfunc->compute_gradient(layer_output, target, gradient); // dy_hat calculation or da_last_layer
-                // // back propagation
+                // back propagation
                 for (size_t y = layers.size() - 1; y>0; y--) {
                     // std::cout<<std::endl<<"layer: "<<y<<std::endl;
                     Layer<T> *layer = layers[y];
                     layer_input = layers_ip[y];
                     Tensor<T> input_gradient = Tensor<T>(std::vector<size_t>({batch_size, layers[y - 1]->getsize()[1], 1}));
                     layer->backward(layer_input, gradient, input_gradient);
-                //     // weight updation
+                    // weight updation
                     layer->update_weights(learning_rate);
                     gradient = input_gradient;
                 }

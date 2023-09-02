@@ -41,14 +41,10 @@ public:
         bias_gradient_ = output_gradient.sum();
     }
     void update_weights(float learning_rate) override {
-        Tensor<T>* temp = new Tensor<T>();
-        *(temp) = weight_gradient_ * learning_rate;
-        weights_ -= (weight_gradient_ * learning_rate);
-        free(temp);
-        temp = new Tensor<T>();
-        *(temp) = bias_gradient_ * learning_rate;
-        biases_ -= (bias_gradient_ * learning_rate);
-        free(temp);
+        Tensor<T> temp1 = weight_gradient_ * learning_rate;
+        weights_ -= temp1;
+        Tensor<T> temp2 = bias_gradient_ * learning_rate;
+        biases_ = biases_ - temp2;
     }
     
     std::vector<size_t> getsize() override {

@@ -97,7 +97,7 @@ public:
     }
     Tensor operator- (const Tensor& mat) const {
         // assert()
-        Tensor temp(std::vector<size_t> {this->shape_[1],this->shape_[0],this->shape_[2]});
+        Tensor temp(std::vector<size_t> {this->shape_[0],this->shape_[1],this->shape_[2]});
         for(size_t k=0; k<this->shape_[2]; ++k) {
             for(size_t i=0;i<this->shape_[0];++i) {
                 for(size_t j=0;j<this->shape_[1];++j)
@@ -111,7 +111,7 @@ public:
         return this->dot(mat);
     }
     Tensor operator* (const float& num) const {
-        Tensor temp(std::vector<size_t> {this->shape_[1],this->shape_[0],this->shape_[2]});
+        Tensor temp(std::vector<size_t> {this->shape_[0],this->shape_[1],this->shape_[2]});
         for(size_t k=0; k<this->shape_[2]; ++k) {
             for(size_t i=0;i<this->shape_[0];++i) {
                 for(size_t j=0;j<this->shape_[1];++j)
@@ -126,8 +126,9 @@ public:
         return (*this);
     }
     Tensor operator-= (Tensor mat) {
-        (*this) = (*this) - mat;
-        return (*this);
+        Tensor<T> temp = (*this) - mat;
+        (*this) = temp;
+        return temp;
     }
 
 

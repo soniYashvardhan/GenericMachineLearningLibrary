@@ -28,16 +28,32 @@ int main() {
     target(0,0,0) = 1;
     input(1,0,0) = -11;
     input(1,1,0) = -6;
-    target(1,0,0) = 1;
+    target(1,0,0) = 0;
     input(2,0,0) = -2;
     input(2,1,0) = 3;
     target(2,0,0) = 0;
     input(3,0,0) = 7;
     input(3,1,0) = -9;
-    target(3,0,0) = 0;
+    target(3,0,0) = 1;
     input(4,0,0) = 17;
     input(4,1,0) = 20;
     target(4,0,0) = 1;
+
+    // input(0,0,0) = 2;
+    // input(0,1,0) = 5;
+    // target(0,0,0) = 1;
+    // input(1,0,0) = -11;
+    // input(1,1,0) = -6;
+    // target(1,0,0) = 1;
+    // input(2,0,0) = -2;
+    // input(2,1,0) = 3;
+    // target(2,0,0) = 0;
+    // input(3,0,0) = 7;
+    // input(3,1,0) = -9;
+    // target(3,0,0) = 0;
+    // input(4,0,0) = 17;
+    // input(4,1,0) = 20;
+    // target(4,0,0) = 1;
     // input(5,0,0) = 63;
     // input(5,1,0) = 23;
     // target(5,0,0) = 1;
@@ -65,7 +81,7 @@ int main() {
 
     model.compile("MeanSquaredError");
     
-    model.fit(input, target, 5, 100, 0.0001);
+    model.fit(input, target, 5, 10, 0.0001);
 
 
     return 0;

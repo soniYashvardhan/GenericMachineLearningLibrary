@@ -18,11 +18,12 @@ class Accuracy: public Metrics<T> {
 					break;
 				}
 			}
+
 			if (correct) {
 				num_correct++;
 			}
 		}
-		T accuracy = num_correct / pred.getsize()[0];
+		T accuracy = (float)num_correct / pred.getsize()[0];
 		return accuracy;
 	}
 };
