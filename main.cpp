@@ -102,7 +102,7 @@ int main() {
     
 
     Model<float> model = *(new Model<float>());
-    model.add_layer(new Dense<float> (2, 2, "relu"));
+    model.add_layer(new Dense<float> (2, 2, "softmax"));
     model.add_layer(new Dense<float> (2, 1, "sigmoid"));
     
 
