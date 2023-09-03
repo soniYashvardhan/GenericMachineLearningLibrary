@@ -102,13 +102,13 @@ int main() {
     
 
     Model<float> model = *(new Model<float>());
-    model.add_layer(new Dense<float> (2, 2, "softmax"));
+    model.add_layer(new Dense<float> (2, 2, "relu"));
     model.add_layer(new Dense<float> (2, 1, "sigmoid"));
     
 
     model.compile("MeanSquaredError");
     
-    model.fit(input, target, 5, 10, 0.0001);
+    model.fit(input, target, 5, 10, 0.001);
 
 
     return 0;

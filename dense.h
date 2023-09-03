@@ -26,6 +26,9 @@ public:
         else if(this->activation_ == "softmax") {
             act = new softmax<T>();
         }
+        else if(this->activation_ == "tanh") {
+            act = new tanh_act<T>();
+        }
     }
     void forward(const Tensor<T>& input, Tensor<T>& output) override {
         output = input.dot(weights_) + biases_;
